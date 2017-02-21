@@ -30,6 +30,16 @@ public class TemperatureTest {
     
     @Test
     public void testTempClassIsCreated(){
-        Temperature temp = new Temperature();
+        Temperature temp = new Temperature("fahrenheit", 32.0);
+        assertNotNull(temp);
+    }
+    
+    @Test
+    public void testTempFromFarenheit(){
+        Temperature fahrenheit = new Temperature("fahrenheit", 32.0);
+        Temperature celsius = fahrenheit.toCelsius();
+        Temperature kelvin = fahrenheit.toKelvin();
+        assertEquals(celsius.temp, 0.0, .001);
+        assertEquals(273.15, kelvin.temp, .001);
     }
 }
